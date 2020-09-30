@@ -11,27 +11,30 @@
 
     <script type="text/javascript">
       var yourVlSpec = {
-        $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
-        description: 'A simple bar chart with embedded data.',
-        data: {
-          values: [
-            {a: 'A', b: 28},
-            {a: 'B', b: 55},
-            {a: 'C', b: 43},
-            {a: 'D', b: 91},
-            {a: 'E', b: 81},
-            {a: 'F', b: 53},
-            {a: 'G', b: 19},
-            {a: 'H', b: 87},
-            {a: 'I', b: 52}
-          ]
-        },
-        mark: 'bar',
-        encoding: {
-          x: {field: 'a', type: 'ordinal'},
-          y: {field: 'b', type: 'quantitative'}
-        }
-      };
+ "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+ "data": {
+   "values": [
+     {"date": "2020-09-20", "lift": "squat", "weight": 65, "reps":11},
+     {"date": "2020-09-20", "lift": "bench", "weight": 65, "reps":11},
+     {"date": "2020-09-23", "lift": "squat", "weight": 70, "reps":3},
+     {"date": "2020-09-23", "lift": "bench", "weight": 70, "reps":6},
+     {"date": "2020-09-27", "lift": "squat", "weight": 70, "reps":8},
+     {"date": "2020-09-27", "lift": "bench", "weight": 70, "reps":7},
+     {"date": "2020-09-30", "lift": "squat", "weight": 70, "reps":9},
+     {"date": "2020-09-30", "lift": "bench", "weight": 70, "reps":8}
+   ]
+ },
+ "transform":[
+     {"as": "volume", "calculate": "datum.weight*(1 + datum.reps/30)"}
+  ],
+ "mark": "area",
+ "encoding": {
+   "x": {"field": "date", "type": "temporal", "title": ""},
+   "row": {"field": "lift", "type": "nominal", "title": ""},
+   "y": {"field": "volume", "type": "quantitative", "title": "" },
+   "color": {"field": "lift", "type": "nominal", "title": "" }
+ }
+};
       vegaEmbed('#vis', yourVlSpec);
     </script>
   </body>
