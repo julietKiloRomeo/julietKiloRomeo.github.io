@@ -7,10 +7,11 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
   </head>
   <body>
-    <div id="vis"></div>
+    <div id="lifts"></div>
+    <div id="weight"></div>
 
     <script type="text/javascript">
-      var yourVlSpec = {
+      var lifts_viz = {
  "width": 800,
  "height": 350,
  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
@@ -18,15 +19,71 @@
  "transform":[
      {"as": "volume", "calculate": "datum.weight*(1 + datum.reps/30)"}
   ],
- "mark": "area",
+ "mark": {"type": "area", "line": true, "point": true},
  "encoding": {
-   "x": {"field": "date", "type": "temporal", "title": ""},
-   "row": {"field": "lift", "type": "nominal", "title": ""},
-   "y": {"field": "volume", "type": "quantitative", "title": "" },
-   "color": {"field": "lift", "type": "nominal", "title": "" }
+   "x": {
+     "field": "date",
+     "type": "temporal",
+     "title": ""
+     },
+   "row": {
+     "field": "lift",
+     "type": "nominal",
+     "title": ""
+     },
+   "y": {
+     "field": "volume",
+     "type": "quantitative",
+     "title": "",
+     "scale": {"zero":false}
+     },
+   "y2": {
+     "field": {"value":70},
+     "type": "quantitative",
+     "title": "",
+     "scale": {"zero":false}
+     },
+   "color": {
+     "field": "lift",
+     "type": "nominal",
+     "title": ""
+     },
+   "tooltip": [
+      {"field": "reps", "type": "quantitative"},
+      {"field": "weight", "type": "quantitative"}
+     ]
  }
 };
-      vegaEmbed('#vis', yourVlSpec);
+
+var weight_viz = {
+ "width": 800,
+ "height": 350,
+ "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+ "data": {"url": "data/weight.json"},
+ "mark": {"type": "area", "line": true, "point": true},
+ "encoding": {
+   "x": {
+     "field": "date",
+     "type": "temporal",
+     "title": ""
+     },
+   "y": {
+     "field": "weight",
+     "type": "quantitative",
+     "title": "",
+     "scale": {"zero":false}
+     },
+   "y2": {
+     "field": {"value":70},
+     "type": "quantitative",
+     "title": "",
+     "scale": {"zero":false}
+     },
+ }
+};
+
+      vegaEmbed('#lifts', lifts_viz);
+      vegaEmbed('#weight', weight_viz);
     </script>
   </body>
 </html>
