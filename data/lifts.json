@@ -11,6 +11,8 @@
     {"date": "2020-10-11", "lift": "bench", "weight": 80, "reps":4},
     {"date": "2020-10-14", "lift": "squat", "weight": 80, "reps":6},
     {"date": "2020-10-14", "lift": "bench", "weight": 80, "reps":5},
-    {"date": "2020-10-14", "lift": "squat", "weight": 85, "reps":4},
-    {"date": "2020-10-14", "lift": "bench", "weight": 85, "reps":3}
+    {"date": "2020-10-18", "lift": "squat", "weight": 80, "reps":7},
+    {"date": "2020-10-18", "lift": "bench", "weight": 80, "reps":5},
+    {"date": "2020-10-21", "lift": "squat", "weight": 85, "reps":4},
+    {"date": "2020-10-21", "lift": "bench", "weight": 85, "reps":3}
 ]
